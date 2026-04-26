@@ -15,7 +15,7 @@ st.set_page_config(
 )
 
 # ─────────────────────────────────────────────
-#  CSS  — فقط تعديلات القائمة الجانبية
+#  CSS  — Sidebar فقط المعدل
 # ─────────────────────────────────────────────
 st.markdown("""
 <style>
@@ -34,70 +34,36 @@ html, body, [class*="css"], * {
 
 .stApp { background: #F7F4F0; }
 
-/* ── تصحيح أبعاد القائمة الجانبية ── */
+/* ── Sidebar المعدل ── */
 section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg,#1A1A2E 0%,#16213E 60%,#0F3460 100%) !important;
+    background: linear-gradient(180deg, #1A1A2E 0%, #16213E 60%, #0F3460 100%) !important;
     width: 280px !important;
-    min-width: 280px !important;
-    max-width: 280px !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: auto !important;
-    right: 0 !important;
-    height: 100vh !important;
-    overflow-y: auto !important;
-    z-index: 100 !important;
 }
 
-/* إزالة أي padding زائد */
-section[data-testid="stSidebar"] > div:first-child {
-    padding: 0 12px !important;
-    width: 100% !important;
-}
-
-/* ضبط المسافة للمحتوى الرئيسي */
-section.main {
-    margin-right: 280px !important;
-}
-
-/* للشاشات الصغيرة */
-@media (max-width: 768px) {
-    section[data-testid="stSidebar"] {
-        width: 260px !important;
-        min-width: 260px !important;
-        max-width: 260px !important;
-    }
-    section.main {
-        margin-right: 260px !important;
-    }
-}
-
-section[data-testid="stSidebar"] * {
-    color: white !important;
-    direction: rtl;
-}
-
-/* Sidebar buttons */
 section[data-testid="stSidebar"] .stButton > button {
     background: transparent !important;
     border: 1px solid rgba(255,255,255,0.18) !important;
     color: white !important;
     border-radius: 10px !important;
-    margin-bottom: 5px !important;
+    margin-bottom: 8px !important;
     font-size: 0.92rem !important;
-    padding: 9px 14px !important;
+    padding: 10px 16px !important;
     text-align: right !important;
     width: 100% !important;
-    box-shadow: none !important;
-    transition: all 0.18s !important;
+    transition: all 0.2s ease !important;
 }
 
 section[data-testid="stSidebar"] .stButton > button:hover {
-    background: rgba(255,107,53,0.28) !important;
+    background: rgba(255,107,53,0.25) !important;
     border-color: #FF6B35 !important;
 }
 
-/* باقي الـ CSS كما هو دون تغيير */
+section[data-testid="stSidebar"] *:not(button) {
+    color: white !important;
+    direction: rtl;
+}
+
+/* Hero banner */
 .hero {
     background: linear-gradient(135deg,#FF6B35 0%,#F7931E 60%,#FF4757 100%);
     border-radius: 20px;
@@ -110,6 +76,7 @@ section[data-testid="stSidebar"] .stButton > button:hover {
 .hero h1 { font-size: 2.2rem; font-weight: 900; margin-bottom: 6px; }
 .hero p  { font-size: 1rem; opacity: 0.92; margin: 0; }
 
+/* Cards */
 .card {
     background: white;
     border-radius: 16px;
@@ -128,6 +95,7 @@ section[data-testid="stSidebar"] .stButton > button:hover {
     display: inline-block;
 }
 
+/* Provider card */
 .pcard {
     background: white;
     border-radius: 16px;
@@ -135,6 +103,7 @@ section[data-testid="stSidebar"] .stButton > button:hover {
     border: 2px solid #F0EBE3;
     margin-bottom: 12px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: border-color 0.18s, box-shadow 0.18s;
 }
 .pcard:hover {
     border-color: #FF6B35;
@@ -155,6 +124,7 @@ section[data-testid="stSidebar"] .stButton > button:hover {
 .badge-blue  { background:#E3F2FD; color:#1565C0; border-color:#90CAF9; }
 .stars { color: #FFB347; }
 
+/* Service grid */
 .svc-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px,1fr));
@@ -163,22 +133,25 @@ section[data-testid="stSidebar"] .stButton > button:hover {
 .svc-item {
     background: white; border: 2px solid #F0EBE3;
     border-radius: 14px; padding: 16px 8px;
-    text-align: center;
+    text-align: center; transition: all 0.18s;
 }
 .svc-item:hover { border-color:#FF6B35; box-shadow:0 4px 16px rgba(255,107,53,0.13); }
 .svc-icon { font-size: 1.9rem; margin-bottom: 5px; }
 .svc-name { font-size: 0.82rem; font-weight: 700; color: #333; }
 
+/* Booking item */
 .bitem {
     background: white; border-radius: 14px;
     padding: 15px 18px; margin-bottom: 11px;
     border: 1px solid #F0EBE3;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.04);
 }
 .bitem-header {
     display: flex; justify-content: space-between;
     align-items: flex-start; flex-wrap: wrap; gap: 8px;
 }
 
+/* Auth */
 .auth-wrap {
     max-width: 500px; margin: 0 auto;
     background: white; border-radius: 20px;
@@ -187,6 +160,7 @@ section[data-testid="stSidebar"] .stButton > button:hover {
 .auth-title { font-size:1.6rem; font-weight:900; color:#FF6B35; text-align:center; margin-bottom:4px; }
 .auth-sub   { text-align:center; color:#888; margin-bottom:22px; font-size:0.9rem; }
 
+/* Main buttons */
 div[data-testid="stButton"] > button {
     background: linear-gradient(135deg,#FF6B35,#F7931E) !important;
     color: white !important; border: none !important;
@@ -195,12 +169,14 @@ div[data-testid="stButton"] > button {
     font-weight: 700 !important; font-size: 0.92rem !important;
     width: 100% !important; padding: 10px 18px !important;
     box-shadow: 0 3px 12px rgba(255,107,53,0.22) !important;
+    transition: transform 0.15s, box-shadow 0.15s !important;
 }
 div[data-testid="stButton"] > button:hover {
     transform: translateY(-1px) !important;
     box-shadow: 0 6px 20px rgba(255,107,53,0.32) !important;
 }
 
+/* Inputs */
 .stTextInput>div>div>input,
 .stSelectbox>div>div,
 .stTextArea>div>div>textarea {
@@ -224,8 +200,10 @@ footer { visibility: hidden; }
 """, unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────
-#  Constants (نفس الكود الأصلي)
+#  باقي الكود من هنا كما هو تماماً (لم يتغير شيء)
 # ─────────────────────────────────────────────
+
+# Constants
 SERVICES = [
     {"icon":"🚗","name":"سيارات"},
     {"icon":"🚚","name":"نقل وتوصيل"},
@@ -255,9 +233,7 @@ STATUS_PENDING  = "قيد الانتظار ⏳"
 STATUS_CONFIRM  = "مؤكد ✅"
 STATUS_CANCEL   = "ملغي ❌"
 
-# ─────────────────────────────────────────────
-#  DB helpers (نفس الكود الأصلي)
-# ─────────────────────────────────────────────
+# DB helpers
 USERS_FILE    = "anjaz_users.json"
 BOOKINGS_FILE = "anjaz_bookings.json"
 REVIEWS_FILE  = "anjaz_reviews.json"
@@ -363,9 +339,7 @@ def save_review(provider_email,client_name,rating,comment):
 def get_reviews(provider_email):
     return _load(REVIEWS_FILE).get(provider_email,[])
 
-# ─────────────────────────────────────────────
-#  Session state (نفس الكود الأصلي)
-# ─────────────────────────────────────────────
+# Session state
 for k,v in {
     "logged_in":False,"user":None,"page":"home",
     "selected_service":None,"selected_provider":None,
@@ -377,10 +351,7 @@ def go(page):
     st.session_state.page=page
     st.rerun()
 
-# ─────────────────────────────────────────────
-#  باقي الكود كما هو (لم يتم تغيير أي شيء)
-# ─────────────────────────────────────────────
-
+# Sidebar
 def render_sidebar():
     with st.sidebar:
         st.markdown("""
@@ -445,14 +416,571 @@ def render_sidebar():
             if st.button("ℹ️  عن التطبيق"):     go("about")
             st.markdown("</div>", unsafe_allow_html=True)
 
-# ─────────────────────────────────────────────
-#  جميع دوال الصفحات الأخرى موجودة هنا (نفس الكود الأصلي)
-#  تم حذفها من هذا المثال للاختصار، ولكنها موجودة في الكود الأصلي
-# ─────────────────────────────────────────────
+# Auth pages
+def page_login():
+    st.markdown('<div class="auth-wrap">', unsafe_allow_html=True)
+    st.markdown('<div class="auth-title">⚡ تسجيل الدخول</div>', unsafe_allow_html=True)
+    st.markdown('<div class="auth-sub">أهلاً بك مجدداً في Anjaz</div>', unsafe_allow_html=True)
 
+    email = st.text_input("📧 الإيميل", placeholder="example@email.com", key="li_e")
+    pw    = st.text_input("🔒 كلمة المرور", type="password", placeholder="••••••••", key="li_p")
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    if st.button("دخول ⚡", key="btn_login"):
+        if email and pw:
+            ok,user,msg = login_user(email.strip().lower(), pw)
+            if ok:
+                st.session_state.logged_in=True
+                st.session_state.user=user
+                st.session_state.page="home"
+                st.rerun()
+            else:
+                st.error(msg)
+        else:
+            st.warning("ادخل الإيميل وكلمة المرور ⚠️")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align:center;color:#888;font-size:0.88rem;'>مش عندك حساب؟</div>",
+                unsafe_allow_html=True)
+    if st.button("إنشاء حساب جديد 📝", key="go_reg"):
+        go("register")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+
+def page_register():
+    st.markdown('<div class="auth-wrap" style="max-width:580px;">', unsafe_allow_html=True)
+    st.markdown('<div class="auth-title">📝 حساب جديد</div>', unsafe_allow_html=True)
+    st.markdown('<div class="auth-sub">اختار نوع حسابك أولاً</div>', unsafe_allow_html=True)
+
+    user_type_raw = st.radio(
+        "نوع الحساب",
+        ["👤 عميل — أبحث عن خدمة","🔧 مقدم خدمة — أقدم خدمة"],
+        key="reg_type"
+    )
+    is_provider = "مقدم" in user_type_raw
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    c1,c2 = st.columns(2)
+    with c1:
+        name  = st.text_input("👤 الاسم كامل", placeholder="محمد أحمد", key="rn")
+        pw    = st.text_input("🔒 كلمة المرور", type="password", placeholder="••••••••", key="rp")
+    with c2:
+        email = st.text_input("📧 الإيميل", placeholder="example@email.com", key="re")
+        pw2   = st.text_input("🔒 تأكيد كلمة المرور", type="password", placeholder="••••••••", key="rp2")
+
+    city = st.selectbox("📍 المحافظة", CITIES, key="rc")
+
+    service_type=bio=experience=None
+    if is_provider:
+        st.markdown("---")
+        st.markdown("**🔧 معلومات الخدمة**")
+        service_type = st.selectbox("نوع الخدمة التي تقدمها", SERVICE_NAMES, key="rs")
+        bio = st.text_area("📝 نبذة عنك",
+            placeholder="اكتب نبذة عن خبرتك وما تقدمه للعملاء...",
+            height=90, key="rb")
+        experience = st.text_input("📅 سنوات الخبرة", placeholder="مثلاً: 5 سنوات", key="rx")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    if st.button("إنشاء الحساب 🚀", key="btn_reg"):
+        if name and email and pw and pw2 and city:
+            if pw!=pw2:
+                st.error("كلمتا المرور غير متطابقتين ❌")
+            elif len(pw)<6:
+                st.error("كلمة المرور أقل من 6 أحرف ❌")
+            else:
+                utype="provider" if is_provider else "client"
+                ok,msg = register_user(name.strip(),email.strip().lower(),pw,
+                                       utype,city,service_type,bio,experience)
+                if ok:
+                    ok2,user,_ = login_user(email.strip().lower(),pw)
+                    if ok2:
+                        st.session_state.logged_in=True
+                        st.session_state.user=user
+                        st.session_state.page="home"
+                        st.rerun()
+                else:
+                    st.error(msg)
+        else:
+            st.warning("اكمل جميع الحقول ⚠️")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    if st.button("عندي حساب بالفعل 🔑", key="go_login"):
+        go("login")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# Landing page
+def page_landing():
+    st.markdown("""
+    <div class="hero">
+        <h1>⚡ Anjaz | أنجز</h1>
+        <p>المنصة الأولى لخدمات الصيانة والمنازل بالعربي</p>
+    </div>""", unsafe_allow_html=True)
+
+    c1,c2 = st.columns(2)
+    with c1:
+        st.markdown("""<div class="card">
+        <div style="font-size:1rem;font-weight:800;color:#CC3300;margin-bottom:10px;">😩 المشكلة</div>
+        <ul style="list-style:none;padding:0;line-height:2.2;color:#444;">
+            <li>❌ صعوبة إيجاد عمال موثوقين</li>
+            <li>❌ ضياع الوقت في البحث</li>
+            <li>❌ أسعار غير واضحة</li>
+            <li>❌ لا توجد تقييمات</li>
+        </ul></div>""", unsafe_allow_html=True)
+    with c2:
+        st.markdown("""<div class="card">
+        <div style="font-size:1rem;font-weight:800;color:#00796B;margin-bottom:10px;">✅ الحل</div>
+        <ul style="list-style:none;padding:0;line-height:2.2;color:#444;">
+            <li>✅ منصة تجمع كل الخدمات</li>
+            <li>✅ بحث حسب المحافظة والخدمة</li>
+            <li>✅ تقييمات حقيقية من عملاء</li>
+            <li>✅ حجز سريع وسهل</li>
+        </ul></div>""", unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown('<div class="section-title">🔧 الخدمات المتاحة</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="svc-grid">' +
+        "".join(f'<div class="svc-item"><div class="svc-icon">{s["icon"]}</div>'
+                f'<div class="svc-name">{s["name"]}</div></div>' for s in SERVICES) +
+        '</div>', unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    col1,col2,col3 = st.columns([1,2,1])
+    with col2:
+        if st.button("🔑 سجّل دخولك وابدأ الآن ⚡", key="landing_cta"):
+            go("login")
+
+# Client pages
+def page_client_home():
+    u = st.session_state.user
+    bookings = get_client_bookings(u["email"])
+
+    st.markdown(f"""
+    <div class="hero">
+        <h1>أهلاً {u['name'].split()[0]}! 👋</h1>
+        <p>محتاج إيه النهارده؟ اختار الخدمة وإحنا نجيبلك أحسن متخصص</p>
+    </div>""", unsafe_allow_html=True)
+
+    s1,s2,s3 = st.columns(3)
+    for col,label,val in [
+        (s1,"📅 حجوزاتي",str(len(bookings))),
+        (s2,"📍 مدينتي",u.get("city","—")),
+        (s3,"🏆 عضويتي","مميز ⭐"),
+    ]:
+        with col:
+            st.markdown(f"""<div class="card" style="text-align:center;">
+                <div style="font-size:1.5rem;font-weight:900;color:#FF6B35;">{val}</div>
+                <div style="font-size:0.85rem;color:#666;margin-top:4px;">{label}</div>
+            </div>""", unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown('<div class="section-title">🔧 ابدأ من هنا</div>', unsafe_allow_html=True)
+
+    cols = st.columns(4)
+    for i,svc in enumerate(SERVICES):
+        with cols[i%4]:
+            st.markdown(f"""<div class="svc-item">
+                <div class="svc-icon">{svc['icon']}</div>
+                <div class="svc-name">{svc['name']}</div>
+            </div>""", unsafe_allow_html=True)
+            if st.button("عرض", key=f"hs_{i}"):
+                st.session_state.selected_service=svc["name"]
+                go("services")
+
+def page_services():
+    st.markdown('<div class="section-title">🔧 تصفح مقدمي الخدمة</div>', unsafe_allow_html=True)
+
+    c1,c2 = st.columns(2)
+    with c1:
+        default_idx=(SERVICE_NAMES.index(st.session_state.selected_service)+1
+                     if st.session_state.selected_service else 0)
+        filter_svc = st.selectbox("نوع الخدمة",["الكل"]+SERVICE_NAMES,
+                                  index=default_idx, key="fs")
+    with c2:
+        filter_city = st.selectbox("المحافظة",["الكل"]+CITIES, key="fc")
+
+    svc_q  = None if filter_svc =="الكل" else filter_svc
+    city_q = None if filter_city=="الكل" else filter_city
+    providers = get_providers(svc_q, city_q)
+
+    if not providers:
+        st.info("🔍 لا يوجد مقدمو خدمة بهذا الاختيار حتى الآن.")
+        return
+
+    providers_sorted = sorted(providers, key=lambda x: -x.get("rating",0))
+    st.markdown(f"<p style='color:#888;margin-bottom:14px;'>تم إيجاد "
+                f"<strong>{len(providers_sorted)}</strong> مقدم خدمة</p>",
+                unsafe_allow_html=True)
+
+    for p in providers_sorted:
+        rating   = p.get("rating",0)
+        r_count  = p.get("rating_count",0)
+        stars    = "⭐"*round(rating) if rating else "لا يوجد تقييم بعد"
+        icon     = SERVICE_ICON.get(p.get("service_type",""),"🔧")
+        reviews  = get_reviews(p["email"])
+
+        st.markdown(f"""
+        <div class="pcard">
+            <div class="bitem-header">
+                <div>
+                    <div class="pname">{icon} {p['name']}</div>
+                    <div class="pmeta">📍 {p.get('city','—')} &nbsp;|&nbsp; 🔧 {p.get('service_type','—')}</div>
+                    <div class="pmeta">⏱️ خبرة: {p.get('experience','غير محدد')}</div>
+                </div>
+                <div>
+                    <span class="badge">{p.get('service_type','')}</span>
+                    <span class="badge badge-green">✅ متاح</span>
+                    <div style="margin-top:5px;">
+                        <span class="stars">{stars}</span>
+                        <span style="color:#aaa;font-size:0.8rem;"> ({r_count} تقييم)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pbio">{p.get('bio','') or 'لم تتم إضافة نبذة.'}</div>
+        </div>""", unsafe_allow_html=True)
+
+        col_r,col_b = st.columns([2,1])
+        with col_r:
+            if reviews:
+                with st.expander(f"💬 التقييمات ({len(reviews)})"):
+                    for r in reviews[-5:]:
+                        st.markdown(f"""
+                        <div style="border-right:3px solid #FF6B35;padding:7px 13px;
+                                    margin-bottom:7px;background:#FFFAF7;border-radius:8px;">
+                            <strong>{r['client']}</strong> &nbsp; {'⭐'*r['rating']}
+                            <br><span style="color:#555;font-size:0.86rem;">{r['comment']}</span>
+                            <br><span style="color:#bbb;font-size:0.76rem;">{r['date']}</span>
+                        </div>""", unsafe_allow_html=True)
+        with col_b:
+            if st.button("📅 احجز الآن", key=f"bk_{p['email']}"):
+                st.session_state.selected_provider=p
+                go("booking")
+
+def page_booking():
+    p = st.session_state.selected_provider
+    if not p:
+        go("services"); return
+
+    icon = SERVICE_ICON.get(p.get("service_type",""),"🔧")
+    st.markdown(f"""
+    <div class="hero" style="padding:28px;">
+        <h1 style="font-size:1.7rem;">{icon} حجز مع {p['name']}</h1>
+        <p>📍 {p.get('city','—')} &nbsp;|&nbsp; 🔧 {p.get('service_type','—')}</p>
+    </div>""", unsafe_allow_html=True)
+
+    with st.form("bform"):
+        c1,c2 = st.columns(2)
+        with c1:
+            date = st.date_input("📅 تاريخ الخدمة", min_value=datetime.today())
+        with c2:
+            time_slot = st.selectbox("🕐 الوقت المناسب",[
+                "صباحاً 8:00 - 10:00","صباحاً 10:00 - 12:00",
+                "ظهراً 12:00 - 2:00","عصراً 2:00 - 4:00",
+                "مساءً 4:00 - 6:00","مساءً 6:00 - 8:00",
+            ])
+        details = st.text_area("📝 وصف المشكلة",
+            placeholder="اشرح المشكلة بالتفصيل...", height=100)
+        address = st.text_input("📍 العنوان التفصيلي",
+            placeholder="الشارع، رقم المبنى، الدور...")
+        submitted = st.form_submit_button("✅ إرسال طلب الحجز")
+
+    if submitted:
+        if details and address:
+            u = st.session_state.user
+            save_booking(u["email"], p["email"], p.get("service_type",""),
+                         f"{details} | العنوان: {address}", date, time_slot)
+            st.success(f"🎉 تم إرسال طلب الحجز مع {p['name']} ليوم {date}!\nسيتم تأكيده من مقدم الخدمة قريباً.")
+            st.session_state.selected_provider=None
+            go("my_bookings")
+        else:
+            st.warning("ادخل تفاصيل المشكلة والعنوان ⚠️")
+
+    if st.button("← رجوع للخدمات"):
+        st.session_state.selected_provider=None
+        go("services")
+
+def page_my_bookings():
+    u = st.session_state.user
+    bookings  = get_client_bookings(u["email"])
+    all_users = get_all_users()
+
+    st.markdown('<div class="section-title">📅 حجوزاتي</div>', unsafe_allow_html=True)
+
+    if not bookings:
+        st.info("مفيش حجوزات لحد دلوقتي. روح تصفح الخدمات! ⚡")
+        if st.button("🔧 تصفح الخدمات"): go("services")
+        return
+
+    for b in sorted(bookings, key=lambda x: x["booked_at"], reverse=True):
+        provider      = all_users.get(b["provider"],{})
+        provider_name = provider.get("name", b["provider"])
+        icon          = SERVICE_ICON.get(b["service"],"🔧")
+        status        = b["status"]
+
+        if STATUS_CONFIRM in status:
+            badge_class="badge-green"
+        elif STATUS_CANCEL in status:
+            badge_class="badge-red"
+        else:
+            badge_class="badge-blue"
+
+        st.markdown(f"""
+        <div class="bitem">
+            <div class="bitem-header">
+                <div>
+                    <div style="font-weight:800;color:#1A1A2E;font-size:1rem;">
+                        {icon} {b['service']}
+                    </div>
+                    <div style="color:#666;font-size:0.85rem;margin-top:3px;">
+                        مع <strong>{provider_name}</strong>
+                    </div>
+                    <div style="color:#aaa;font-size:0.8rem;margin-top:2px;">
+                        📅 {b['date']} &nbsp;|&nbsp; 🕐 {b['time']}
+                    </div>
+                </div>
+                <span class="badge {badge_class}">{status}</span>
+            </div>
+        </div>""", unsafe_allow_html=True)
+
+        if STATUS_PENDING in status:
+            col_c, col_sp = st.columns([1,3])
+            with col_c:
+                if st.button("❌ إلغاء الطلب", key=f"cli_cancel_{b['id']}"):
+                    update_booking_status(b["id"], STATUS_CANCEL)
+                    st.success("تم إلغاء الطلب.")
+                    st.rerun()
+
+        if STATUS_CONFIRM in status and not b.get("rated"):
+            with st.expander(f"⭐ قيّم {provider_name}"):
+                rating  = st.slider("تقييمك من 5", 1, 5, 5, key=f"rt_{b['id']}")
+                comment = st.text_area("تعليقك", placeholder="شاركنا تجربتك...",
+                                       key=f"cm_{b['id']}", height=75)
+                if st.button("إرسال التقييم ⭐", key=f"sb_{b['id']}"):
+                    update_rating(b["provider"], rating)
+                    save_review(b["provider"], u["name"], rating, comment)
+                    mark_rated(b["id"])
+                    st.success("شكراً على تقييمك! ⭐")
+                    st.rerun()
+
+# Provider pages
+def page_provider_home():
+    u         = st.session_state.user
+    orders    = get_provider_bookings(u["email"])
+    all_users = get_all_users()
+    rating    = u.get("rating",0)
+    r_count   = u.get("rating_count",0)
+    icon      = SERVICE_ICON.get(u.get("service_type",""),"🔧")
+
+    st.markdown(f"""
+    <div class="hero">
+        <h1>{icon} أهلاً {u['name'].split()[0]}!</h1>
+        <p>لوحة التحكم — {u.get('service_type','')}</p>
+    </div>""", unsafe_allow_html=True)
+
+    pending = [o for o in orders if STATUS_PENDING in o["status"]]
+    s1,s2,s3 = st.columns(3)
+    for col,label,val in [
+        (s1,"📋 إجمالي الطلبات",str(len(orders))),
+        (s2,"⏳ طلبات معلقة",str(len(pending))),
+        (s3,"⭐ تقييمي",f"{rating:.1f} ({r_count})"),
+    ]:
+        with col:
+            st.markdown(f"""<div class="card" style="text-align:center;">
+                <div style="font-size:1.5rem;font-weight:900;color:#FF6B35;">{val}</div>
+                <div style="font-size:0.85rem;color:#666;margin-top:4px;">{label}</div>
+            </div>""", unsafe_allow_html=True)
+
+    if pending:
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown('<div class="section-title">⏳ طلبات تحتاج ردك</div>', unsafe_allow_html=True)
+        for b in pending[:3]:
+            client      = all_users.get(b["client"],{})
+            client_name = client.get("name", b["client"])
+            st.markdown(f"""
+            <div class="bitem">
+                <div class="bitem-header">
+                    <div>
+                        <div style="font-weight:800;color:#1A1A2E;">👤 {client_name}</div>
+                        <div style="color:#aaa;font-size:0.8rem;">
+                            📅 {b['date']} &nbsp;|&nbsp; 🕐 {b['time']}
+                        </div>
+                    </div>
+                    <span class="badge badge-blue">{b['status']}</span>
+                </div>
+            </div>""", unsafe_allow_html=True)
+            ca,cb = st.columns(2)
+            with ca:
+                if st.button("✅ قبول", key=f"ph_acc_{b['id']}"):
+                    update_booking_status(b["id"], STATUS_CONFIRM)
+                    st.success("تم قبول الطلب ✅")
+                    st.rerun()
+            with cb:
+                if st.button("❌ رفض", key=f"ph_rej_{b['id']}"):
+                    update_booking_status(b["id"], STATUS_CANCEL)
+                    st.info("تم رفض الطلب.")
+                    st.rerun()
+
+def page_provider_orders():
+    u         = st.session_state.user
+    orders    = get_provider_bookings(u["email"])
+    all_users = get_all_users()
+
+    st.markdown('<div class="section-title">📋 جميع الطلبات</div>', unsafe_allow_html=True)
+
+    if not orders:
+        st.info("لم تصلك طلبات بعد.")
+        return
+
+    for b in sorted(orders, key=lambda x: x["booked_at"], reverse=True):
+        client      = all_users.get(b["client"],{})
+        client_name = client.get("name", b["client"])
+        client_city = client.get("city","—")
+        status      = b["status"]
+
+        if STATUS_CONFIRM in status:   badge_class="badge-green"
+        elif STATUS_CANCEL in status:  badge_class="badge-red"
+        else:                          badge_class="badge-blue"
+
+        st.markdown(f"""
+        <div class="bitem">
+            <div class="bitem-header">
+                <div>
+                    <div style="font-weight:800;color:#1A1A2E;">👤 {client_name}</div>
+                    <div style="color:#888;font-size:0.83rem;">
+                        📍 {client_city} &nbsp;|&nbsp; 📅 {b['date']} &nbsp;|&nbsp; 🕐 {b['time']}
+                    </div>
+                    <div style="color:#555;font-size:0.85rem;margin-top:5px;">{b['details']}</div>
+                    <div style="color:#bbb;font-size:0.77rem;margin-top:4px;">
+                        تم الحجز: {b['booked_at']}
+                    </div>
+                </div>
+                <span class="badge {badge_class}">{status}</span>
+            </div>
+        </div>""", unsafe_allow_html=True)
+
+        if STATUS_PENDING in status:
+            ca,cb = st.columns(2)
+            with ca:
+                if st.button("✅ قبول الطلب", key=f"acc_{b['id']}"):
+                    update_booking_status(b["id"], STATUS_CONFIRM)
+                    st.success("تم قبول الطلب ✅")
+                    st.rerun()
+            with cb:
+                if st.button("❌ رفض الطلب", key=f"rej_{b['id']}"):
+                    update_booking_status(b["id"], STATUS_CANCEL)
+                    st.info("تم رفض الطلب.")
+                    st.rerun()
+
+def page_provider_profile():
+    u       = st.session_state.user
+    icon    = SERVICE_ICON.get(u.get("service_type",""),"🔧")
+    rating  = u.get("rating",0)
+    r_count = u.get("rating_count",0)
+    stars   = "⭐"*round(rating) if rating else "لا يوجد تقييم بعد"
+    reviews = get_reviews(u["email"])
+
+    st.markdown('<div class="section-title">👤 ملفي الشخصي</div>', unsafe_allow_html=True)
+
+    st.markdown(f"""
+    <div class="card">
+        <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;">
+            <div style="font-size:3rem;">{icon}</div>
+            <div>
+                <div style="font-size:1.2rem;font-weight:900;color:#1A1A2E;">{u['name']}</div>
+                <div style="color:#888;font-size:0.87rem;">
+                    📍 {u.get('city','—')} &nbsp;|&nbsp; 🔧 {u.get('service_type','—')}
+                </div>
+                <div style="color:#888;font-size:0.87rem;">
+                    ⏱️ خبرة: {u.get('experience','غير محدد')}
+                </div>
+                <div style="margin-top:5px;">
+                    <span class="stars">{stars}</span>
+                    <span style="color:#aaa;font-size:0.83rem;"> ({r_count} تقييم)</span>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid #F0EBE3;
+                    color:#444;font-size:0.92rem;">
+            {u.get('bio','لم تتم إضافة نبذة.')}
+        </div>
+    </div>""", unsafe_allow_html=True)
+
+    if reviews:
+        st.markdown('<div class="section-title">💬 تقييمات العملاء</div>', unsafe_allow_html=True)
+        for r in reversed(reviews):
+            st.markdown(f"""
+            <div style="border-right:3px solid #FF6B35;padding:9px 14px;margin-bottom:9px;
+                        background:white;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,0.05);">
+                <strong>{r['client']}</strong> &nbsp; {'⭐'*r['rating']}
+                <br><span style="color:#555;font-size:0.88rem;">{r['comment']}</span>
+                <br><span style="color:#bbb;font-size:0.76rem;">{r['date']}</span>
+            </div>""", unsafe_allow_html=True)
+    else:
+        st.info("لم تصلك تقييمات بعد ⭐")
+
+def page_about():
+    st.markdown("""
+    <div class="hero">
+        <h1>⚡ Anjaz | أنجز</h1>
+        <p>وسيط بين العميل ومقدم الخدمة</p>
+    </div>""", unsafe_allow_html=True)
+
+    c1,c2 = st.columns(2)
+    with c1:
+        st.markdown("""<div class="card">
+        <div style="font-size:1rem;font-weight:800;color:#FF6B35;margin-bottom:10px;">
+            🎯 الفئة المستهدفة
+        </div>
+        <ul style="list-style:none;padding:0;line-height:2.2;color:#444;">
+            <li>👨‍👩‍👧 الأسر</li><li>🧑 الشباب</li>
+            <li>🏢 أصحاب الشقق</li><li>👤 أي شخص يحتاج خدمة</li>
+        </ul></div>""", unsafe_allow_html=True)
+    with c2:
+        st.markdown("""<div class="card">
+        <div style="font-size:1rem;font-weight:800;color:#FF6B35;margin-bottom:10px;">
+            💰 نموذج الربح
+        </div>
+        <ul style="list-style:none;padding:0;line-height:2.2;color:#444;">
+            <li>💸 عمولة على كل طلب</li>
+            <li>📢 إعلانات ممولة</li>
+            <li>🏆 اشتراكات لمقدمي الخدمة</li>
+        </ul></div>""", unsafe_allow_html=True)
+
+    st.markdown("""<div class="card" style="text-align:center;">
+        <div style="font-size:0.95rem;color:#555;line-height:2;">
+            Anjaz — فكرة بسيطة، قابلة للتنفيذ، وتخدم المجتمع ❤️<br>
+            <strong style="color:#FF6B35;">Anjaz © 2025</strong>
+        </div>
+    </div>""", unsafe_allow_html=True)
+
+# Router
 def main():
     render_sidebar()
-    # باقي الكود كما هو...
+
+    page   = st.session_state.page
+    logged = st.session_state.logged_in
+    u      = st.session_state.user
+
+    if not logged:
+        if   page=="login":    page_login()
+        elif page=="register": page_register()
+        elif page=="about":    page_about()
+        else:                  page_landing()
+        return
+
+    if u["type"]=="client":
+        if   page=="home":        page_client_home()
+        elif page=="services":    page_services()
+        elif page=="booking":     page_booking()
+        elif page=="my_bookings": page_my_bookings()
+        elif page=="about":       page_about()
+        else:                     page_client_home()
+    else:
+        if   page=="home":             page_provider_home()
+        elif page=="provider_orders":  page_provider_orders()
+        elif page=="provider_profile": page_provider_profile()
+        elif page=="about":            page_about()
+        else:                          page_provider_home()
 
 if __name__=="__main__":
     main()
