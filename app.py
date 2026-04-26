@@ -557,27 +557,33 @@ def go(page):
 def render_sidebar():
     with st.sidebar:
         # Logo area
-        st.markdown("""
-        <div style="text-align: center; padding: 30px 12px 20px;">
-            <div style="font-size: 2.5rem;">⚡</div>
-            <div style="font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; margin-top: 5px;">Anjaz</div>
-            <div style="font-size: 0.8rem; opacity: 0.65; margin-top: 5px;">أنجز خدمتك بسرعة</div>
-        </div>
-        <hr style="border-color: rgba(255,255,255,0.1); margin: 0 8px 20px;">
-        """, unsafe_allow_html=True)
+        st.markdown(
+            """
+            <div style="text-align: center; padding: 30px 12px 20px;">
+                <div style="font-size: 2.5rem;">⚡</div>
+                <div style="font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; margin-top: 5px;">Anjaz</div>
+                <div style="font-size: 0.8rem; opacity: 0.65; margin-top: 5px;">أنجز خدمتك بسرعة</div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 0 8px 20px;">
+            """,
+            unsafe_allow_html=True
+        )
 
         if st.session_state.logged_in:
             u = st.session_state.user
             utype_label = "مقدم خدمة 🔧" if u["type"] == "provider" else "عميل 👤"
             
-            st.markdown(f"""
-            <div style="background: rgba(255,255,255,0.08); border-radius: 16px;
-                        padding: 15px; margin: 0 0 20px; text-align: center;">
-                <div style="font-size: 1rem; font-weight: 800;">{u['name']}</div>
-                <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 4px;">{utype_label}</div>
-                <div style="font-size: 0.75rem; opacity: 0.6; margin-top: 4px;">📍 {u.get('city', '')}</div>
-            </div>
-            """, unsafe_allow_html=True)
+            st.markdown(
+                f"""
+                <div style="background: rgba(255,255,255,0.08); border-radius: 16px;
+                            padding: 15px; margin: 0 0 20px; text-align: center;">
+                    <div style="font-size: 1rem; font-weight: 800;">{u['name']}</div>
+                    <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 4px;">{utype_label}</div>
+                    <div style="font-size: 0.75rem; opacity: 0.6; margin-top: 4px;">📍 {u.get('city', '')}</div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
 
             if u["type"] == "client":
                 menu = [
@@ -600,7 +606,10 @@ def render_sidebar():
                 if st.button(f"{active_class}{icon}  {label}", key=f"nav_{pk}"):
                     go(pk)
 
-            st.markdown("<hr style='border-color: rgba(255,255,255,0.1); margin: 20px 0 15px;'>", unsafe_allow_html=True)
+            st.markdown(
+                "<hr style='border-color: rgba(255,255,255,0.1); margin: 20px 0 15px;'>",
+                unsafe_allow_html=True
+            )
             
             if st.button("🚪  تسجيل الخروج", key="logout_btn"):
                 st.session_state.logged_in = False
@@ -614,7 +623,10 @@ def render_sidebar():
             if st.button("📝  إنشاء حساب", key="register_btn"):
                 go("register")
             
-            st.markdown("<hr style='border-color: rgba(255,255,255,0.1); margin: 15px 0;'>", unsafe_allow_html=True)
+            st.markdown(
+                "<hr style='border-color: rgba(255,255,255,0.1); margin: 15px 0;'>",
+                unsafe_allow_html=True
+            )
             
             if st.button("ℹ️  عن التطبيق", key="about_btn"):
                 go("about")
@@ -646,7 +658,10 @@ def page_login():
             st.warning("ادخل الإيميل وكلمة المرور ⚠️")
 
     st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("<div style='text-align: center; color: #888; font-size: 0.85rem;'>مش عندك حساب؟</div>", unsafe_allow_html=True)
+    st.markdown(
+        "<div style='text-align: center; color: #888; font-size: 0.85rem;'>مش عندك حساب؟</div>",
+        unsafe_allow_html=True
+    )
     
     if st.button("إنشاء حساب جديد 📝", key="go_reg"):
         go("register")
@@ -727,50 +742,57 @@ def page_register():
 #  Landing (not logged in)
 # ─────────────────────────────────────────────
 def page_landing():
-    st.markdown("""
-    <div class="hero">
-        <h1>⚡ Anjaz | أنجز</h1>
-        <p>المنصة الأولى لخدمات الصيانة والمنازل بالعربي</p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown(
+        """
+        <div class="hero">
+            <h1>⚡ Anjaz | أنجز</h1>
+            <p>المنصة الأولى لخدمات الصيانة والمنازل بالعربي</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("""
-        <div class="card">
-            <div style="font-size: 1.1rem; font-weight: 800; color: #CC3300; margin-bottom: 12px;">😩 المشكلة</div>
-            <ul style="list-style: none; padding: 0; line-height: 2.2; color: #444;">
-                <li>❌ صعوبة إيجاد عمال موثوقين</li>
-                <li>❌ ضياع الوقت في البحث</li>
-                <li>❌ أسعار غير واضحة</li>
-                <li>❌ لا توجد تقييمات</li>
-            </ul>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown(
+            """
+            <div class="card">
+                <div style="font-size: 1.1rem; font-weight: 800; color: #CC3300; margin-bottom: 12px;">😩 المشكلة</div>
+                <ul style="list-style: none; padding: 0; line-height: 2.2; color: #444;">
+                    <li>❌ صعوبة إيجاد عمال موثوقين</li>
+                    <li>❌ ضياع الوقت في البحث</li>
+                    <li>❌ أسعار غير واضحة</li>
+                    <li>❌ لا توجد تقييمات</li>
+                </ul>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
     
     with col2:
-        st.markdown("""
-        <div class="card">
-            <div style="font-size: 1.1rem; font-weight: 800; color: #00796B; margin-bottom: 12px;">✅ الحل</div>
-            <ul style="list-style: none; padding: 0; line-height: 2.2; color: #444;">
-                <li>✅ منصة تجمع كل الخدمات</li>
-                <li>✅ بحث حسب المحافظة والخدمة</li>
-                <li>✅ تقييمات حقيقية من عملاء</li>
-                <li>✅ حجز سريع وسهل</li>
-            </ul>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown(
+            """
+            <div class="card">
+                <div style="font-size: 1.1rem; font-weight: 800; color: #00796B; margin-bottom: 12px;">✅ الحل</div>
+                <ul style="list-style: none; padding: 0; line-height: 2.2; color: #444;">
+                    <li>✅ منصة تجمع كل الخدمات</li>
+                    <li>✅ بحث حسب المحافظة والخدمة</li>
+                    <li>✅ تقييمات حقيقية من عملاء</li>
+                    <li>✅ حجز سريع وسهل</li>
+                </ul>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown('<div class="section-title">🔧 الخدمات المتاحة</div>', unsafe_allow_html=True)
     
-    st.markdown(
-        '<div class="svc-grid">' +
-        "".join(f'<div class="svc-item"><div class="svc-icon">{s["icon"]}</div>'
-                f'<div class="svc-name">{s["name"]}</div></div>' for s in SERVICES) +
-        '</div>', 
-        unsafe_allow_html=True
-    )
+    svc_html = '<div class="svc-grid">'
+    for s in SERVICES:
+        svc_html += f'<div class="svc-item"><div class="svc-icon">{s["icon"]}</div><div class="svc-name">{s["name"]}</div></div>'
+    svc_html += '</div>'
+    st.markdown(svc_html, unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
     
@@ -786,26 +808,34 @@ def page_client_home():
     u = st.session_state.user
     bookings = get_client_bookings(u["email"])
 
-    st.markdown(f"""
-    <div class="hero">
-        <h1>أهلاً {u['name'].split()[0]}! 👋</h1>
-        <p>محتاج إيه النهارده؟ اختار الخدمة وإحنا نجيبلك أحسن متخصص</p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown(
+        f"""
+        <div class="hero">
+            <h1>أهلاً {u['name'].split()[0]}! 👋</h1>
+            <p>محتاج إيه النهارده؟ اختار الخدمة وإحنا نجيبلك أحسن متخصص</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
     col1, col2, col3 = st.columns(3)
-    for col, label, val in [
+    stats = [
         (col1, "📅 حجوزاتي", str(len(bookings))),
         (col2, "📍 مدينتي", u.get("city", "—")),
         (col3, "🏆 عضويتي", "مميز ⭐"),
-    ]:
+    ]
+    
+    for col, label, val in stats:
         with col:
-            st.markdown(f"""
-            <div class="card" style="text-align: center;">
-                <div style="font-size: 1.6rem; font-weight: 900; color: #FF6B35;">{val}</div>
-                <div style="font-size: 0.85rem; color: #666; margin-top: 6px;">{label}</div>
-            </div>
-            """, unsafe_allow_html=True)
+            st.markdown(
+                f"""
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 1.6rem; font-weight: 900; color: #FF6B35;">{val}</div>
+                    <div style="font-size: 0.85rem; color: #666; margin-top: 6px;">{label}</div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown('<div class="section-title">🔧 ابدأ من هنا</div>', unsafe_allow_html=True)
@@ -813,12 +843,15 @@ def page_client_home():
     cols = st.columns(4)
     for i, svc in enumerate(SERVICES):
         with cols[i % 4]:
-            st.markdown(f"""
-            <div class="svc-item">
-                <div class="svc-icon">{svc['icon']}</div>
-                <div class="svc-name">{svc['name']}</div>
-            </div>
-            """, unsafe_allow_html=True)
+            st.markdown(
+                f"""
+                <div class="svc-item">
+                    <div class="svc-icon">{svc['icon']}</div>
+                    <div class="svc-name">{svc['name']}</div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
             if st.button("عرض", key=f"hs_{i}"):
                 st.session_state.selected_service = svc["name"]
                 go("services")
@@ -847,9 +880,10 @@ def page_services():
         return
 
     providers_sorted = sorted(providers, key=lambda x: -x.get("rating", 0))
-    st.markdown(f"<p style='color: #888; margin-bottom: 16px;'>تم إيجاد "
-                f"<strong>{len(providers_sorted)}</strong> مقدم خدمة</p>",
-                unsafe_allow_html=True)
+    st.markdown(
+        f"<p style='color: #888; margin-bottom: 16px;'>تم إيجاد <strong>{len(providers_sorted)}</strong> مقدم خدمة</p>",
+        unsafe_allow_html=True
+    )
 
     for p in providers_sorted:
         rating = p.get("rating", 0)
@@ -857,32 +891,33 @@ def page_services():
         stars = "⭐" * round(rating) if rating else "لا يوجد تقييم بعد"
         icon = SERVICE_ICON.get(p.get("service_type", ""), "🔧")
         reviews = get_reviews(p["email"])
+        bio_text = p.get('bio', '') or 'لم تتم إضافة نبذة.'
 
-        st.markdown(f"""
-        <div class="pcard">
-            <div class="bitem-header">
-                <div>
-                    <div class="pname">{icon} {p['name']}</div>
-                    <div class="pmeta">📍 {p.get('city', '—')} &nbsp;|&nbsp; 🔧 {p.get('service_type', '—')}</div>
-                    <div class="pmeta">⏱️ خبرة: {p.get('experience', 'غير محدد')}</div>
-                </div>
-                <div>
-                    <span class="badge">{p.get('service_type', '')}</span>
-                    <span class="badge badge-green">✅ متاح</span>
-                    <div style="margin-top: 6px;">
-                        <span class="stars">{stars}</span>
-                        <span style="color: #aaa; font-size: 0.8rem;"> ({r_count} تقييم)</span>
+        st.markdown(
+            f"""
+            <div class="pcard">
+                <div class="bitem-header">
+                    <div>
+                        <div class="pname">{icon} {p['name']}</div>
+                        <div class="pmeta">📍 {p.get('city', '—')} &nbsp;|&nbsp; 🔧 {p.get('service_type', '—')}</div>
+                        <div class="pmeta">⏱️ خبرة: {p.get('experience', 'غير محدد')}</div>
+                    </div>
+                    <div>
+                        <span class="badge">{p.get('service_type', '')}</span>
+                        <span class="badge badge-green">✅ متاح</span>
+                        <div style="margin-top: 6px;">
+                            <span class="stars">{stars}</span>
+                            <span style="color: #aaa; font-size: 0.8rem;"> ({r_count} تقييم)</span>
+                        </div>
                     </div>
                 </div>
+                <div class="pbio">{bio_text}</div>
             </div>
-            <div class="pbio">{p.get('bio', '') or 'لم تتم إضافة نبذة.'}</div>
-        </div>
-        """, unsafe_allow_html=True)
+            """,
+            unsafe_allow_html=True
+        )
 
         col_r, col_b = st.columns([2, 1])
         with col_r:
             if reviews:
-                with st.expander(f"💬 التقييمات ({len(reviews)})"):
-                    for r in reviews[-5:]:
-                        st.markdown(f"""
-                        <div style="border-right: 3px solid #FF6B35
+                with st
