@@ -262,7 +262,7 @@ footer { visibility: hidden; }
 
 SERVICES = [
     {"icon":"🚗","name":"سيارات"},
-    {"icon":"🚚","name":"نقل و��وصيل"},
+    {"icon":"🚚","name":"نقل وتوصيل"},
     {"icon":"💻","name":"خدمات أون لاين"},
     {"icon":"🔧","name":"سباكة"},
     {"icon":"⚡","name":"كهرباء"},
@@ -1102,7 +1102,7 @@ def page_landing():
     st.markdown("<br>", unsafe_allow_html=True)
     col1,col2,col3 = st.columns([1,2,1])
     with col2:
-        if st.button("🔑 سجّل دخولك ��ابدأ الآن ⚡", key="landing_cta"):
+        if st.button("🔑 سجّل دخولك وابدأ الآن ⚡", key="landing_cta"):
             go("login")
 
 def page_client_home():
@@ -1376,4 +1376,4 @@ def page_my_profile():
         c1, c2, c3, c4 = st.columns(4)
         with c1:
             st.metric("📅 إجمالي الحجوزات", len(bookings))
-      
+        
