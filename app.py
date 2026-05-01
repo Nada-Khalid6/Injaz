@@ -1306,4 +1306,63 @@ def page_about():
         <div style="font-size:1rem;font-weight:800;color:#FF6B35;margin-bottom:10px;">
             🎯 الفئة المستهدفة
         </div>
-    
+        <ul style="list-style:none;padding:0;line-height:2.2;color:#444;">
+            <li>👨‍👩‍👧 الأسر</li><li>🧑 الشباب</li>
+            <li>🏢 أصحاب الشقق</li><li>👤 أي شخص يحتاج خدمة</li>
+        </ul></div>""", unsafe_allow_html=True)
+    with c2:
+        st.markdown("""<div class="card">
+        <div style="font-size:1rem;font-weight:800;color:#FF6B35;margin-bottom:10px;">
+            💰 نموذج الربح
+        </div>
+        <ul style="list-style:none;padding:0;line-height:2.2;color:#444;">
+            <li>💸 عمولة على كل طلب</li>
+            <li>📢 إعلانات ممولة</li>
+            <li>🏆 اشتراكات لمقدمي الخدمة</li>
+        </ul></div>""", unsafe_allow_html=True)
+
+    st.markdown("""<div class="card" style="text-align:center;">
+        <div style="font-size:0.95rem;color:#555;line-height:2;">
+            Anjaz — فكرة بسيطة، قابلة للتنفيذ، وتخدم المجتمع ❤️<br>
+            <strong style="color:#FF6B35;">Anjaz © 2025</strong>
+        </div>
+    </div>""", unsafe_allow_html=True)
+
+# ─────────────────────────────────────────────
+#  Router
+# ─────────────────────────────────────────────
+def main():
+    render_sidebar()
+
+    page   = st.session_state.page
+    logged = st.session_state.logged_in
+    u      = st.session_state.user
+
+    if not logged:
+        if   page=="login":    page_login()
+        elif page=="register": page_register()
+        elif page=="about":    page_about()
+        else:                  page_landing()
+        return
+
+    if u["type"]=="client":
+        if   page=="home":            page_client_home()
+        elif page=="services":        page_services()
+        elif page=="provider_detail": page_provider_detail()  # الصفحة الجديدة
+        elif page=="booking":         page_booking()
+        elif page=="my_bookings":     page_my_bookings()
+        elif page=="messaging":       page_messaging()
+        elif page=="notifications":   page_notifications()
+        elif page=="about":           page_about()
+        else:                         page_client_home()
+    else:
+        if   page=="home":              page_provider_home()
+        elif page=="provider_orders":   page_provider_orders()
+        elif page=="provider_profile":  page_provider_profile()
+        elif page=="messaging":         page_messaging()
+        elif page=="notifications":     page_notifications()
+        elif page=="about":             page_about()
+        else:                           page_provider_home()
+
+if __name__=="__main__":
+    main()
